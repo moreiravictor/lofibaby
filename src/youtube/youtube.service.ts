@@ -1,18 +1,25 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import youtube from 'src/config/youtubeConfig';
+import { Videos } from './entities/types/videos';
 
 @Injectable()
 export class YoutubeService {
-  constructor(private readonly http: HttpService) {}
+  lofiUrl: string;
+  apiKey: string;
 
-  async latestLofiId() {
-    const { items } = await this.getLofiLives();
-    return items[0].id.videoId;
+  constructor(private readonly http: HttpService) {
+    this.lofiUrl = youtube().lofi_url;
+    this.apiKey = youtube().api_key;
   }
 
-  async getLofiLives() {
+  async latestLofiId(): Promise<string> {
+    const videos: Videos = await this.getLofiLives();
+    return videos.items[0].id.videoId;
+  }
+
+  async getLofiLives(): Promise<Videos> {
     const res = await this.http
-      .get(`${youtube().lofi_url}${youtube().api_key}`)
+      .get(`${this.lofiUrl}${this.apiKey}`)
       .toPromise();
     return res.data;
   }
