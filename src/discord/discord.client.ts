@@ -19,12 +19,12 @@ export class DiscordClient {
   }
 
   setup() {
-    this.client.on('message', (message: Message) => this.setupMessage(message));
+    this.client.on('message', (message: Message) => this.handle(message));
   }
 
-  async setupMessage(message: Message) {
+  private async handle(message: Message) {
     const lofi = new LofiMessage(message);
     if (lofi.notSafe()) return;
-    this.commandHander.executeCommand(lofi);
+    this.commandHander.execute(lofi);
   }
 }
