@@ -22,7 +22,6 @@ export class DiscordService {
 
   setupBroadcastSafety(dispatcher, message, video_id) {
     dispatcher.on('error', () => this.playLofi(message));
-    dispatcher.on('start', () => message.channel.send(Youtube.URL(video_id)));
     dispatcher.on('speaking', (isSpeaking) => {
       if (!isSpeaking) {
         this.playLofi(message);
