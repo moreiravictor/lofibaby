@@ -20,8 +20,9 @@ export class DiscordService {
       const dispatcher = connection.play(ytdl(Youtube.URL(lofi_id)));
       this.setupConnectionSafety(connection, message);
       this.setupBroadcastSafety(dispatcher, message, lofi_id);
+    } else {
+      message.reply('you must be in a voice channel to play lofi!');
     }
-    message.reply('you must be in a voice channel to play lofi!');
   }
 
   setupConnectionSafety(connection: VoiceConnection, message: Message) {
