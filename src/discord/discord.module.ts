@@ -16,5 +16,6 @@ export class DiscordModule {
   onModuleInit() {
     this.client.connect();
     this.client.setup();
+    console.log('bot setted up');
   }
 }
