@@ -26,14 +26,13 @@ export class DiscordService {
   }
 
   setupConnectionSafety(connection: VoiceConnection, message: Message) {
-    connection.on('debug', (debug) => {console.log(debug)});
     connection.on('error', () => this.playLofi(message));
-    connection.on('failed', (fail) => {console.log(fail)});
+    connection.on('failed', (fail) => {console.log('connection: ', fail)});
   }
 
   setupBroadcastSafety(dispatcher: StreamDispatcher, message: Message, video_id: string) {
     dispatcher.on('error', () => this.playLofi(message));
-    dispatcher.on('debug', (message) => {console.log(message)});
+    dispatcher.on('debug', (message) => {console.log('broadcast: ', message)});
     dispatcher.on('speaking', (isSpeaking) => {
       if (!isSpeaking) {
         this.playLofi(message);
