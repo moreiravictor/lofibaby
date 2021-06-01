@@ -13,6 +13,10 @@ Wanna try it? Just click the image above!
 
 ?lofi: the bot joins your room and begins to play lofi beats
 
+?bye: the bot quits the voice channel
+
+?help: the bot sends a message with all commands to your text channel 
+
 ## Installation
 
 ```bash
