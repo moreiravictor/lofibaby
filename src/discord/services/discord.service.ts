@@ -12,6 +12,13 @@ export class DiscordService {
     message.reply('pong');
   }
 
+  help(message: Message) {
+    message.channel.send(`Hey there, I'm lofibaby :musical_note: . Want some help?\n\n`+
+                          `Commands:\n`+
+                          `- type **?lofi** to start playing lofi\n`+
+                          `- type **?bye** to kick me from the channel`);
+  }
+
   async exit(message: Message) {
     message.reply('bye onii-chan!');
     message.member.voice.channel.leave();
