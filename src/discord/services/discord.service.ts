@@ -12,6 +12,12 @@ export class DiscordService {
     message.reply('pong');
   }
 
+  async exit(message: Message) {
+    message.reply('bye onii-chan!');
+    message.member.voice.channel.leave();
+    console.log('bot disconnected!');
+  }
+
   async playLofi(message: Message) {
     if (message.member.voice.channel) {
       console.log('bot connected!');

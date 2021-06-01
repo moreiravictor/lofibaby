@@ -10,6 +10,8 @@ export class CommandHandler {
     const command = lofi.getCommand();
     if (command === 'lofi') {
       this.disc.playLofi(lofi.message);
+    } else if (command === 'exit') {
+      this.disc.exit(lofi.message);
     }
   }
 }
