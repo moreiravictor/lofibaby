@@ -14,8 +14,8 @@ export class LofiMessage {
   }
 
   getCommand() {
-    const commandBody = this.message.content.slice(this.prefix.length);
-    const args = commandBody.split(' ');
+    const command = this.message.content.slice(this.prefix.length);
+    const args = command.split(' ');
     return args.shift().toLowerCase();
   }
 }
